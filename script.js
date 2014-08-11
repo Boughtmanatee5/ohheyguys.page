@@ -1,21 +1,49 @@
-mainSection = document.querySelector('.main')
-maleButton = document.querySelector('.male');
-femaleButton = document.querySelector('.female')
+'use-strict';
+var mainSection = document.querySelector('.main');
+var maleButton = document.querySelector('.male');
+var femaleButton = document.querySelector('.female');
 
-loadingHtml = document.getElementById('loading').innerHTML
+var loadingGuysHtml = document.getElementById('loadingGuys').innerHTML;
+var loadingGalsHtml = document.getElementById('loadingGals').innerHTML;
 
-profileHtml = document.getElementById('profile').innerHTML
+var profileHtml = document.getElementById('profile').innerHTML;
 
 maleButton.addEventListener('click', function() {
-  mainSection.innerHTML = loadingHtml;
+  mainSection.innerHTML = loadingGalsHtml;
+
+  var namesSection = document.querySelector('.names').childNodes;
+  var i = 1;
+  function switchNames() {
+    namesSection[i].className = '';
+    i+= 2;
+    namesSection[i].className = 'active';
+
+    if(i <= namesSection.length)  {
+      window.setTimeout(switchNames, 500);
+    }
+  }
+  switchNames();
   window.setTimeout(function() {
-    mainSection.innerHTML = profileHtml
+    mainSection.innerHTML = profileHtml;
   }, 5000);
-})
+});
 
 femaleButton.addEventListener('click', function() {
-  mainSection.innerHTML = loadingHtml;
+  mainSection.innerHTML = loadingGuysHtml;
+
+  var namesSection = document.querySelector('.names').childNodes;
+  var i = 1;
+  function switchNames() {
+    namesSection[i].className = '';
+    i+= 2;
+    namesSection[i].className = 'active';
+
+    if(i <= namesSection.length)  {
+      window.setTimeout(switchNames, 500);
+    }
+  }
+  switchNames();
   window.setTimeout(function() {
-    mainSection.innerHTML = profileHtml
+    mainSection.innerHTML = profileHtml;
   }, 5000);
-})
+});
